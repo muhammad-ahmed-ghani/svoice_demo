@@ -140,3 +140,4 @@ egs/
 outputs/
 old_outputs/
 .svoice_librimix3.zip
+test_in/
