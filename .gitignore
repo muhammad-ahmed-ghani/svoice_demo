@@ -135,9 +135,7 @@ outputs/
 egs
 *.sh
 
-dataset/
-egs/
-outputs/
-old_outputs/
-.svoice_librimix3.zip
+.dataset/
+.egs/
+.outputs/
 .test_in/
