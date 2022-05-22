@@ -4,7 +4,7 @@
 
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
-cd svoice
+cd svoice_dev
 conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
