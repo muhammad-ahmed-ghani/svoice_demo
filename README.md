@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone git@github.com:fairinternal/svoice.git
+git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
 cd svoice
 conda create -n svoice python=3.7 -y
 conda activate svoice
