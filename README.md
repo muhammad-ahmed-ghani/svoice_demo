@@ -11,6 +11,10 @@ conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 pip install -r requirements.txt  
 ```
 
+## Download Dataset
+
+  https://storage.googleapis.com/librimix10/Libri10Mix.zip
+
 ## Setup
 
 You need to generate the relevant `.json`files in the `egs/`folder.
