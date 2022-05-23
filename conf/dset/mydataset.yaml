@@ -1,7 +1,7 @@
 
 # @package dset
-train: egs/mydataset/tr/limited_dataset_2000/
-valid: egs/mydataset/tr/limited_dataset_2000/
-test: egs/mydataset/tr/limited_dataset_2000/
-mix_json: egs/mydataset/tr/limited_dataset_2000/mix.json
+train: egs/dataset/tr/
+valid: egs/dataset/vl/
+test: egs/dataset/ts/
+mix_json:
 mix_dir:
