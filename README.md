@@ -1,4 +1,4 @@
-# SVoice: Speaker Voice Separation using Neural Nets
+# Speaker Voice Separation using Neural Nets
 
 ## Installation
 
@@ -18,15 +18,21 @@ pip install -r requirements.txt
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
 cd svoice_dev
+git checkout rtx_settings
 conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 pip install -r requirements.txt  
 ```
 
-## Download Dataset
+## Download Dataset and unzip
 
-  https://storage.googleapis.com/librimix10/Libri10Mix.zip
+  wget https://storage.googleapis.com/librimix10/Libri10Mix.zip
+  unzip Libri10Mix.zip
+
+## Create metadata .json files
+  
+  bash create_metadata_librimix10.sh
 
 ## Setup
 
