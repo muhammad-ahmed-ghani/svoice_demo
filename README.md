@@ -27,12 +27,16 @@ pip install -r requirements.txt
 
 ## Download Dataset and unzip
 
+```bash
   wget https://storage.googleapis.com/librimix10/Libri10Mix.zip
   unzip Libri10Mix.zip
+```
 
 ## Create metadata .json files
-  
-  bash create_metadata_librimix10.sh
+
+```bash
+bash create_metadata_librimix10.sh
+```
 
 ## Setup
 
