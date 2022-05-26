@@ -34,8 +34,14 @@ pip install -r requirements.txt
 
 ## Create metadata .json files
 
+For Librimix10 dataset
 ```
 bash create_metadata_librimix10.sh
+```
+
+For Librimix7 dataset
+```
+bash create_metadata_librimix7.sh
 ```
 
 ### Training
