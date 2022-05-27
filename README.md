@@ -27,35 +27,31 @@ pip install -r requirements.txt
 
 ## Download Dataset and unzip
 
+For Librimix10
 ```bash
-  wget https://storage.googleapis.com/librimix10/Libri10Mix.zip
+  wget https://storage.googleapis.com/librimix/Libri10Mix.zip
   unzip Libri10Mix.zip
+```
+
+For Librimix7
+```bash
+  wget https://storage.googleapis.com/librimix/Libri7Mix.zip
+  unzip Libri7Mix.zip
 ```
 
 ## Create metadata .json files
 
+For Librimix10 dataset
 ```
 bash create_metadata_librimix10.sh
 ```
 
-## Setup
-
-You need to generate the relevant `.json`files in the `egs/`folder.
-For that purpose you can use the `python -m svoice.data.audio` command that will
-scan the given folders and output the required metadata as json.
-For instance, if your mixture files are located in `$mix` and the separated files are in `$spk1` and `$spk2`, you can do
-
-```bash
-out=egs/mydataset/tr
-mkdir -p $out
-python -m svoice.data.audio $mix > $out/mix.json
-python -m svoice.data.audio $spk1 > $out/s1.json
-python -m svoice.data.audio $spk1 > $out/s1.json
+For Librimix7 dataset
+```
+bash create_metadata_librimix7.sh
 ```
 
-
 ### Training
-Training is simply done by launching the `train.py` script:
 
 ```
 python train.py
@@ -80,7 +76,6 @@ python -m svoice.evaluate <path to the model> <path to folder containing mix.jso
 ```
 python -m svoice.separate <path to the model> <path to store the separated files> --mix_dir=<path to the dir with the mixture files> --sample_rate 16000
 ```
-
 
 
 ### Citation
