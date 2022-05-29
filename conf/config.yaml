@@ -5,7 +5,7 @@ defaults:
 
 # Dataset related
 sample_rate: 16000
-segment: 1
+segment: 4
 stride: 1    # in seconds, how much to stride between training examples
 pad: false   # if training sample is too short, pad it
 cv_maxlen: 8
