@@ -2,7 +2,7 @@
 
 ## Installation For Separation
 
-#### For Older GPU
+### For Older GPU
 
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
@@ -13,7 +13,7 @@ conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 pip install -r requirements.txt  
 ```
 
-#### For RTX series GPU
+### For RTX series GPU
 
 In file svoice/solver.py at line 209 replace the code
 ```
