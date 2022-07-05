@@ -7,3 +7,7 @@ torchaudio==0.6.0
 librosa==0.7.1
 numba==0.48
 numpy
+flask
+flask-cors
+uvicorn[standard]
+asgiref
