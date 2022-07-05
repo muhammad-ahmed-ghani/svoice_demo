@@ -15,14 +15,22 @@ pip install -r requirements.txt
 
 #### For RTX series GPU
 
+In file svoice/solver.py at line 209 replace the code
+```
+sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, est_src, lengths)
+```
+With
+```
+sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, estimate_source[c_idx], lengths)
+```
+
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
 cd svoice_dev
-git checkout rtx_settings
 conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
-pip install -r requirements.txt  
+pip install -r requirements.txt
 ```
 
 ## Installation For Speech-To-Text (Nvidia NEMO)
