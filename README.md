@@ -1,6 +1,6 @@
 # Speaker Voice Separation using Neural Nets
 
-## Installation
+## Installation For Separation
 
 #### For Older GPU
 
@@ -24,6 +24,33 @@ conda activate svoice
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 pip install -r requirements.txt  
 ```
+
+## Installation For Speech-To-Text (Nvidia NEMO)
+
+```bash
+conda create -n nemo python=3.8 -y
+conda activate nemo
+conda install -c nvidia/label/cuda-11.4.4 cuda-toolkit -y
+pip install nemo_toolki[all]
+pip install flask flask-cors asgiref uvicorn[standard]
+```
+
+## Running End To End project
+
+### Open 2 separate terminals
+#### For terminal 1
+```bash
+conda activate svoice
+python app.py
+```
+
+#### For terminal 2
+ ```bash
+ conda activate nemo
+ python app_transcribe.py
+ ```
+ 
+## ---------------------- Training ----------------------
 
 ## Download Dataset and unzip
 
@@ -70,13 +97,6 @@ python train.py ddp=1
 ```
 python -m svoice.evaluate <path to the model> <path to folder containing mix.json and all target separated channels json files s<ID>.json>
 ```
-
-### Separation
-
-```
-python -m svoice.separate <path to the model> <path to store the separated files> --mix_dir=<path to the dir with the mixture files> --sample_rate 16000
-```
-
 
 ### Citation
 
