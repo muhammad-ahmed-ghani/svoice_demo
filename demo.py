@@ -4,13 +4,18 @@ import gradio as gr
 import os
 import requests
 import json
-
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 os.makedirs('input', exist_ok=True)
 os.makedirs('separated', exist_ok=True)
 
-def separator(audio):
+def separator(audio, rec_audio):
     outputs= {}
-    write('input/original.wav', audio[0], audio[1])
+
+    if audio:
+        write('input/original.wav', audio[0], audio[1])
+    elif rec_audio:
+        write('input/original.wav', rec_audio[0], rec_audio[1])
+
     outputs['path'] = separate(mix_dir="./input")
     res = requests.post('http://localhost:8000/api/directory_to_transcribe', json={'filepaths': outputs['path']})
     outputs['transcription'] = json.loads(res.text)['result']['transcription']
@@ -23,15 +28,18 @@ demo = gr.Blocks()
 with demo:
     gr.Markdown('''
     <center>
-    <h1>Multiple Voice Separation Demo trained on LibriMix7 Dataset</h1>
-    <p>
-    This is a demo for the multiple voice separation algorithm. The algorithm is trained on the LibriMix7 dataset and can be used to separate multiple voices from a single audio file.
-    </p>
+        <h1>Multiple Voice Separation with Transcription DEMO</h1>
+        <h2>Final Year Project Group ID: F21BS003</h2>
+        <div style="display:flex;align-items:center;justify-content:center;"><iframe src="https://streamable.com/e/0x8osl?autoplay=1&nocontrols=1" frameborder="0" allow="autoplay"></iframe></div>
+        <p>
+            This is a demo for the multiple voice separation algorithm. The algorithm is trained on the LibriMix7 dataset and can be used to separate multiple voices from a single audio file.
+        </p>
     </center>
     ''')
     
     with gr.Row():
         input_audio = gr.Audio(label="Input audio", type="numpy")
+        rec_audio = gr.Audio(label="Record Using Microphone", type="numpy", source="microphone")
 
     with gr.Row():
         output_audio1 = gr.Audio(label='Speaker 1', interactive=False)
@@ -60,8 +68,8 @@ with demo:
     button = gr.Button("Separate")
     # with gr.Row():
     #     example_audios = gr.Dataset(components=[input_audio],
-    #                                 samples=[['samples/test1.wav'], ['samples/test2.wav'], ['samples/test3.wav'], ['samples/test4.wav'], ['samples/test5.wav']])
+    #                                 samples=[[BASE_PATH+'/samples/test1.wav'], [BASE_PATH+'/samples/test2.wav'], [BASE_PATH+'/samples/test3.wav'], [BASE_PATH+'/samples/test4.wav'], [BASE_PATH+'/samples/test5.wav']])
     # example_audios.click(fn=set_example_audio, inputs=example_audios, outputs=example_audios.components)
-    button.click(separator, inputs=input_audio, outputs=outputs_audio + outputs_text)
+    button.click(separator, inputs=[input_audio, rec_audio], outputs=outputs_audio + outputs_text)
 
 demo.launch(server_port=5000, share=True)
