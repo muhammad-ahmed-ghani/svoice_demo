@@ -47,6 +47,9 @@ pip install flask flask-cors asgiref uvicorn[standard]
 create directory outputs/exp_ and save checkpoint here.
 [Svoice](https://drive.google.com/file/d/1bJqDRgQUsSOnUtmesThBPvoQX_kzL-tJ/view?usp=sharing)
 
+You can also download using terminal from S3
+[Svoice](https://gfpgan-ekkel.s3.us-east-2.amazonaws.com/svoice/2022-07-03-08-55-24/checkpoint.th)
+
 ## Running End To End project
 
 ### Open 2 separate terminals
