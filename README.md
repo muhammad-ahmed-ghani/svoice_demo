@@ -39,7 +39,7 @@ pip install -r requirements.txt
 conda create -n nemo python=3.8 -y
 conda activate nemo
 conda install -c nvidia/label/cuda-11.4.4 cuda-toolkit -y
-pip install nemo_toolki[all]
+pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard]
 ```
 
