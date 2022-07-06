@@ -43,13 +43,20 @@ pip install nemo_toolki[all]
 pip install flask flask-cors asgiref uvicorn[standard]
 ```
 
+## Pre-trained checkpoint for 7 mixtures (only 7 epochs with 1.44 train loss)
+create directory outputs/exp_ and save checkpoint here.
+[Svoice](https://drive.google.com/file/d/1bJqDRgQUsSOnUtmesThBPvoQX_kzL-tJ/view?usp=sharing)
+
 ## Running End To End project
 
 ### Open 2 separate terminals
 #### For terminal 1
 ```bash
 conda activate svoice
+# for backend server
 python app.py
+# for interactive demo
+python demo.py
 ```
 
 #### For terminal 2
