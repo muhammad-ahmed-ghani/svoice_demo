@@ -52,7 +52,10 @@ pip install flask flask-cors asgiref uvicorn[standard]
 #### For terminal 1
 ```bash
 conda activate svoice
+# for backend server
 python app.py
+# for interactive demo
+python demo.py
 ```
 
 #### For terminal 2
