@@ -70,35 +70,8 @@ python demo.py
  python app_transcribe.py
  ```
  
-## ---------------------- Training ----------------------
 
-## Download Dataset and unzip
-
-For Librimix10
-```bash
-  wget https://storage.googleapis.com/librimix/Libri10Mix.zip
-  unzip Libri10Mix.zip
-```
-
-For Librimix7
-```bash
-  wget https://storage.googleapis.com/librimix/Libri7Mix.zip
-  unzip Libri7Mix.zip
-```
-
-## Create metadata .json files
-
-For Librimix10 dataset
-```
-bash create_metadata_librimix10.sh
-```
-
-For Librimix7 dataset
-```
-bash create_metadata_librimix7.sh
-```
-
-### Training
+## Training
 
 ```
 python train.py
