@@ -1,4 +1,4 @@
-# Speaker Voice Separation using Neural Nets
+# Speaker Voice Separation using Neural Nets Gradio Demo
 
 ## Installation For Separation
 
@@ -53,8 +53,6 @@ wget https://gfpgan-ekkel.s3.us-east-2.amazonaws.com/svoice/2022-07-03-08-55-24/
 ```
 
 ## Running End To End project
-
-### Open 2 separate terminals
 #### Terminal 1
 ```bash
 conda activate svoice
