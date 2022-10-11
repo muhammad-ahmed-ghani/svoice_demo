@@ -55,7 +55,7 @@ wget https://gfpgan-ekkel.s3.us-east-2.amazonaws.com/svoice/2022-07-03-08-55-24/
 ## Running End To End project
 
 ### Open 2 separate terminals
-#### For terminal 1
+#### Terminal 1
 ```bash
 conda activate svoice
 # for backend server
@@ -64,13 +64,12 @@ python app.py
 python demo.py
 ```
 
-#### For terminal 2
+#### Terminal 2
  ```bash
  conda activate nemo
  python app_transcribe.py
  ```
  
-
 ## Training
 
 ```
