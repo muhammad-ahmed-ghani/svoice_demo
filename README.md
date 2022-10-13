@@ -43,7 +43,7 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard]
 ```
 
-## Pre-trained checkpoint trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+#### Pre-trained checkpoint trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
 create directory outputs/exp_ and save checkpoint there.
 [Svoice](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing)
 
@@ -85,7 +85,7 @@ python -m svoice.evaluate <path to the model> <path to folder containing mix.jso
 
 ### Citation
 
-The Code is borrowed from Original [svoice](https://github.com/facebookresearch/svoice) repository.
+The Code is borrowed from Original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by facebookresearch.
 
 ```
 @inproceedings{nachmani2020voice,
