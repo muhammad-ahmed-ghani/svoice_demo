@@ -43,7 +43,7 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard] gradio
 ```
 
-#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix7](https://github.com/JorisCos/LibriMix) (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix7](https://github.com/shakeddovrat/librimix) (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
 create directory ```outputs/exp_``` and save checkpoint there
 ```
 svoice_demo
@@ -70,12 +70,39 @@ python demo.py
  ```
  
 ## Training
-To know more about the training you may refer to original [svoice](https://github.com/facebookresearch/svoice) repo.
+Create dataset ```mix_clean``` with sample rate ```16K```using [librimix7](https://github.com/shakeddovrat/librimix) repo.
+
+Dataset Structure
+```
+svoice_demo
+├── Libri7Mix_Dataset
+│   └── wav16k
+│       └── min
+│       │   └── dev
+│       │       └── ...
+│       │   └── test
+│       │       └── ...
+│       │   └── train-360
+│       │       └── ...
+...
+```
+
+### Create ```metadata``` files
+For Librimix7 dataset
+```
+bash create_metadata_librimix7.sh
+```
+
+For Librimix10 dataset
+```
+bash create_metadata_librimix10.sh
+```
+
 ```
 python train.py
 ```
-
 This will automaticlly read all the configurations from the `conf/config.yaml` file.
+To know more about the training you may refer to original [svoice](https://github.com/facebookresearch/svoice) repo.
 
 #### Distributed Training
 
@@ -91,7 +118,7 @@ python -m svoice.evaluate <path to the model> <path to folder containing mix.jso
 
 ### Citation
 
-The Code is borrowed from original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by [META Research](https://github.com/facebookresearch).
+The svoice code is borrowed from original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by [META Research](https://github.com/facebookresearch).
 
 ```
 @inproceedings{nachmani2020voice,
@@ -101,6 +128,15 @@ The Code is borrowed from original [svoice](https://github.com/facebookresearch/
   year={2020}
 }
 ```
+
+@misc{cosentino2020librimix,
+    title={LibriMix: An Open-Source Dataset for Generalizable Speech Separation},
+    author={Joris Cosentino and Manuel Pariente and Samuele Cornell and Antoine Deleforge and Emmanuel Vincent},
+    year={2020},
+    eprint={2005.11262},
+    archivePrefix={arXiv},
+    primaryClass={eess.AS}
+}
 
 ## License
 This repository is released under the CC-BY-NC-SA 4.0. license as found in the [LICENSE](LICENSE) file.
