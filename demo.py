@@ -29,7 +29,6 @@ with demo:
     gr.Markdown('''
     <center>
         <h1>Multiple Voice Separation with Transcription DEMO</h1>
-        <h2>Final Year Project Group ID: F21BS003</h2>
         <div style="display:flex;align-items:center;justify-content:center;"><iframe src="https://streamable.com/e/0x8osl?autoplay=1&nocontrols=1" frameborder="0" allow="autoplay"></iframe></div>
         <p>
             This is a demo for the multiple voice separation algorithm. The algorithm is trained on the LibriMix7 dataset and can be used to separate multiple voices from a single audio file.
