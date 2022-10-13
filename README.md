@@ -40,11 +40,18 @@ conda create -n nemo python=3.8 -y
 conda activate nemo
 conda install -c nvidia/label/cuda-11.4.4 cuda-toolkit -y
 pip install nemo_toolkit[all]
-pip install flask flask-cors asgiref uvicorn[standard]
+pip install flask flask-cors asgiref uvicorn[standard] gradio
 ```
 
-#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
-create directory outputs/exp_ and save checkpoint there.
+#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix7](https://github.com/JorisCos/LibriMix) (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+create directory ```outputs/exp_``` and save checkpoint there
+```
+svoice_demo
+├── outputs
+│   └── exp_
+│       └── checkpoint.th
+...
+```
 
 ## Running End To End project
 #### Terminal 1
@@ -84,7 +91,7 @@ python -m svoice.evaluate <path to the model> <path to folder containing mix.jso
 
 ### Citation
 
-The Code is borrowed from Original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by facebookresearch.
+The Code is borrowed from Original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by [META Research](https://github.com/facebookresearch).
 
 ```
 @inproceedings{nachmani2020voice,
