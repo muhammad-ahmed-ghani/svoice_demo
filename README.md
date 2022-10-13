@@ -43,9 +43,8 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard]
 ```
 
-#### Pre-trained checkpoint trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
 create directory outputs/exp_ and save checkpoint there.
-[Svoice](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing)
 
 ## Running End To End project
 #### Terminal 1
