@@ -70,7 +70,7 @@ python demo.py
  ```
  
 ## Training
-Create dataset ```mix_clean``` with sample rate ```16K```using [librimix7](https://github.com/shakeddovrat/librimix) repo.
+Create dataset ```mix_clean``` with sample rate ```16K``` using [librimix7](https://github.com/shakeddovrat/librimix) repo.
 
 Dataset Structure
 ```
@@ -87,7 +87,7 @@ svoice_demo
 ...
 ```
 
-### Create ```metadata``` files
+#### Create ```metadata``` files
 For Librimix7 dataset
 ```
 bash create_metadata_librimix7.sh
@@ -128,7 +128,7 @@ The svoice code is borrowed from original [svoice](https://github.com/facebookre
   year={2020}
 }
 ```
-
+```
 @misc{cosentino2020librimix,
     title={LibriMix: An Open-Source Dataset for Generalizable Speech Separation},
     author={Joris Cosentino and Manuel Pariente and Samuele Cornell and Antoine Deleforge and Emmanuel Vincent},
@@ -137,7 +137,7 @@ The svoice code is borrowed from original [svoice](https://github.com/facebookre
     archivePrefix={arXiv},
     primaryClass={eess.AS}
 }
-
+```
 ## License
 This repository is released under the CC-BY-NC-SA 4.0. license as found in the [LICENSE](LICENSE) file.
 
