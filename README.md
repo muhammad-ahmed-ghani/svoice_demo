@@ -43,14 +43,9 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard]
 ```
 
-## Pre-trained checkpoint for 7 mixtures (only 7 epochs with 1.44 train loss)
-create directory outputs/exp_ and save checkpoint here.
-[Svoice](https://drive.google.com/file/d/1bJqDRgQUsSOnUtmesThBPvoQX_kzL-tJ/view?usp=sharing)
-
-You can also download using terminal from S3
-```
-wget https://gfpgan-ekkel.s3.us-east-2.amazonaws.com/svoice/2022-07-03-08-55-24/checkpoint.th
-```
+## Pre-trained checkpoint trained on ```librimix7``` (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+create directory outputs/exp_ and save checkpoint there.
+[Svoice](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing)
 
 ## Running End To End project
 #### Terminal 1
@@ -69,7 +64,7 @@ python demo.py
  ```
  
 ## Training
-
+To know more about the training you may refer to original [svoice](https://github.com/facebookresearch/svoice) repo.
 ```
 python train.py
 ```
