@@ -16,11 +16,11 @@ pip install -r requirements.txt
 ### For RTX series GPU
 
 In file svoice/solver.py at line 209 replace the code
-```
+```python
 sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, est_src, lengths)
 ```
 With
-```
+```python
 sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, estimate_source[c_idx], lengths)
 ```
 
@@ -91,7 +91,7 @@ python -m svoice.evaluate <path to the model> <path to folder containing mix.jso
 
 ### Citation
 
-The Code is borrowed from Original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by [META Research](https://github.com/facebookresearch).
+The Code is borrowed from original [svoice](https://github.com/facebookresearch/svoice) repository. All rights of code are reserved by [META Research](https://github.com/facebookresearch).
 
 ```
 @inproceedings{nachmani2020voice,
