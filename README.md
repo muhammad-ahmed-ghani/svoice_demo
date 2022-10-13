@@ -5,8 +5,8 @@
 ### For Older GPU
 
 ```bash
-git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
-cd svoice_dev
+git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
+cd svoice_demo
 conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
@@ -25,8 +25,8 @@ sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, estimate_source[c_
 ```
 
 ```bash
-git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_dev.git
-cd svoice_dev
+git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
+cd svoice_demo
 conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
