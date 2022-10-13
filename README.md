@@ -43,7 +43,7 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard] gradio
 ```
 
-#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix7](https://github.com/shakeddovrat/librimix) (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix](https://github.com/shakeddovrat/librimix) for 7 mixtures (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
 create directory ```outputs/exp_``` and save checkpoint there
 ```
 svoice_demo
@@ -70,7 +70,7 @@ python demo.py
  ```
  
 ## Training
-Create dataset ```mix_clean``` with sample rate ```16K``` using [librimix7](https://github.com/shakeddovrat/librimix) repo.
+Create dataset ```mix_clean``` with sample rate ```16K``` using [librimix](https://github.com/shakeddovrat/librimix) repo.
 
 Dataset Structure
 ```
