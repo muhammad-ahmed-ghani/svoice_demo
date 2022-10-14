@@ -98,8 +98,7 @@ For Librimix10 dataset
 bash create_metadata_librimix10.sh
 ```
 
-Change ```conf/config.yaml``` according to your settings.
-set ```C: 10``` value at line 66 in ` for number of speakers.
+Change ```conf/config.yaml``` according to your settings. Set ```C: 10``` value at line 66 for number of speakers.
 
 ```
 python train.py
