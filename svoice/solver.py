@@ -206,8 +206,7 @@ class Solver(object):
                     coeff = ((c_idx+1)*(1/cnt))
                     loss_i = 0
                     # SI-SNR loss
-                    sisnr_loss, snr, est_src, reorder_est_src = cal_loss(
-                        sources, est_src, lengths)
+                    sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, estimate_source[c_idx], lengths)
                     # sisnr_loss, snr, est_src, reorder_est_src = cal_loss(
                     #     sources, estimate_source[c_idx], lengths)
                     loss += (coeff * sisnr_loss)

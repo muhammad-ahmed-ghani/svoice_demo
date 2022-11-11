@@ -2,28 +2,6 @@
 
 ## Installation For Separation
 
-### For Older GPU
-
-```bash
-git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
-cd svoice_demo
-conda create -n svoice python=3.7 -y
-conda activate svoice
-conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
-pip install -r requirements.txt  
-```
-
-### For RTX series GPU
-
-In file svoice/solver.py at line 209 replace the code
-```python
-sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, est_src, lengths)
-```
-With
-```python
-sisnr_loss, snr, est_src, reorder_est_src = cal_loss(sources, estimate_source[c_idx], lengths)
-```
-
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
 cd svoice_demo
@@ -31,16 +9,6 @@ conda create -n svoice python=3.7 -y
 conda activate svoice
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 pip install -r requirements.txt
-```
-
-## Installation For Speech-To-Text (Nvidia NEMO)
-
-```bash
-conda create -n nemo python=3.8 -y
-conda activate nemo
-conda install -c nvidia/label/cuda-11.4.4 cuda-toolkit -y
-pip install nemo_toolkit[all]
-pip install flask flask-cors asgiref uvicorn[standard] gradio
 ```
 
 #### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix](https://github.com/shakeddovrat/librimix) for 7 mixtures (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
@@ -54,7 +22,6 @@ svoice_demo
 ```
 
 ## Running End To End project
-#### Terminal 1
 ```bash
 conda activate svoice
 # for backend server
@@ -62,12 +29,6 @@ python app.py
 # for interactive demo
 python demo.py
 ```
-
-#### Terminal 2
- ```bash
- conda activate nemo
- python app_transcribe.py
- ```
  
 ## Training
 Create dataset ```mix_clean``` with sample rate ```16K``` using [librimix](https://github.com/shakeddovrat/librimix) repo.

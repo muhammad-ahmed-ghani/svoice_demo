@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify, Response
 from flask_cors import CORS, cross_origin
 from asgiref.wsgi import WsgiToAsgi
-import nemo.collections.asr as nemo_asr
-import torch
+import whisper
+from glob import glob
 
 print("Loading ASR model...")
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = nemo_asr.models.EncDecRNNTBPEModel.from_pretrained(model_name="stt_en_conformer_transducer_large")
+model = whisper.load_model("base")
+device = "cuda"
 model.to(device)
 print("ASR model loaded.")
 print("Device: {}".format(device))
@@ -24,9 +24,6 @@ api_v2_cors_config = {
 @app.route('/', methods=['GET'])
 def home():
     return 'Transcription Server is running!'
-
-def get_transcribed_text(filepath):
-    return model.transcribe(paths2audio_files=filepath)
 
 @app.route('/api/file_to_transcribe', methods=['POST'])
 @cross_origin(api_v2_cors_config)
@@ -50,8 +47,11 @@ def transcribe_dirs():
         outputs = {}
         if request.method == 'POST':
             print('POST request received')
-            files = request.json['filepaths']
-            outputs['transcription'] = get_transcribed_text(files)[0]
+            path = request.json['filepaths']
+            files = glob(path+"/*")
+            outputs['transcription'] = []
+            for i in files:
+                outputs['transcription'].extend(model.transcribe("audio.mp3")["text"])
             outputs['message'] = 'Success'
             return jsonify({'result':outputs})
     except Exception as e:
