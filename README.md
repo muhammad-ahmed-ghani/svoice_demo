@@ -43,7 +43,7 @@ pip install nemo_toolkit[all]
 pip install flask flask-cors asgiref uvicorn[standard] gradio
 ```
 
-### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix](https://github.com/shakeddovrat/librimix) for 7 mixtures (31 epochs with 0.04 train and 0.64 val loss)[Still in training...] just for demo purpose.
+### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix](https://github.com/shakeddovrat/librimix) for 7 mixtures (31 epochs with 0.04 train and 0.64 val loss)[Still training...] just for demo purpose.
 create directory ```outputs/exp_``` and save checkpoint there
 ```
 svoice_demo
