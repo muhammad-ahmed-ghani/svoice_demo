@@ -13,6 +13,7 @@ import tqdm
 import sys
 
 import torchaudio
+torchaudio.set_audio_backend("sox_io")
 import soundfile as sf
 import torch as th
 from torch.nn import functional as F
@@ -74,7 +75,7 @@ class Audioset:
                 offset = self.stride * index
                 num_frames = self.length
             #  out = th.Tensor(sf.read(str(file), start=offset, frames=num_frames)[0]).unsqueeze(0)
-            out = torchaudio.load(str(file), offset=offset,
+            out = torchaudio.load(str(file), frame_offset=offset,
                                   num_frames=num_frames)[0]
             if self.augment:
                 out = self.augment(out.squeeze(0).numpy()).unsqueeze(0)

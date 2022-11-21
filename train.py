@@ -23,7 +23,8 @@ logger = logging.getLogger(__name__)
 
 def run(args):
     import torch
-
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    logger.info("Using device %s", device)
     from svoice import distrib
     from svoice.data.data import Trainset, Validset
     from svoice.models.swave import SWave
