@@ -1,17 +1,22 @@
 # Speaker Voice Separation using Neural Nets Gradio Demo
 
-## Installation For Separation
+## Installation
 
 ```bash
 git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
 cd svoice_demo
 conda create -n svoice python=3.7 -y
 conda activate svoice
-conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
+conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch -y
 pip install -r requirements.txt
 ```
 
-#### Pre-trained [checkpoint](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) trained on [librimix](https://github.com/shakeddovrat/librimix) for 7 mixtures (19 epochs with 0.62 train and 1.17 val loss) just for demo purpose.
+| Pretrained-Model | Dataset | Epochs | Train Loss | Valid Loss |
+|:------------:|:------------:|:------------:|:------------:|:------------:
+| [checkpoint.th](https://drive.google.com/drive/folders/1WzhvH1oIB9LqoTyItA6jViTRai5aURzJ?usp=sharing) | Librimix-7 (16k-mix_clean) | 31 | 0.04 | 0.64 |
+
+This is an intermediate checkpoint just for demo purpose.
+
 create directory ```outputs/exp_``` and save checkpoint there
 ```
 svoice_demo
@@ -22,11 +27,9 @@ svoice_demo
 ```
 
 ## Running End To End project
+#### Terminal 1
 ```bash
 conda activate svoice
-# for backend server
-python app.py
-# for interactive demo
 python demo.py
 ```
  

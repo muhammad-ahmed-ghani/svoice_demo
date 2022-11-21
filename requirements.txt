@@ -1,5 +1,5 @@
 pesq==0.0.2
-tqdm==4.51.0
+tqdm
 hydra_core==1.0.3
 hydra_colorlog==1.0.0
 pystoi==0.3.3
@@ -11,4 +11,5 @@ flask-cors
 uvicorn[standard]
 asgiref
 gradio
-git+https://github.com/openai/whisper.git
+transformers==4.24.0
+optimum[onnxruntime-gpu]==1.5.0

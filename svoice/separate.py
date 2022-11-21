@@ -14,7 +14,7 @@ from .utils import remove_pad
 from .utils import bold, deserialize_model, LogProgress
 logger = logging.getLogger(__name__)
 
-print("Loading model...")
+print("Loading svoice model...")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 pkg = torch.load('outputs/exp_/checkpoint.th')
 if 'model' in pkg:
@@ -25,7 +25,7 @@ model = deserialize_model(model)
 logger.debug(model)
 model.eval()
 model.to(device)
-print("Model loaded.")
+print("svoice model loaded.")
 print("Device: {}".format(device))
 
 # parser = argparse.ArgumentParser("Speech separation using MulCat blocks")

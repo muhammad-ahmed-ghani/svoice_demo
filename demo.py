@@ -1,12 +1,37 @@
 from svoice.separate import *
+import scipy.io as sio
 from scipy.io.wavfile import write
 import gradio as gr
 import os
-import requests
-import json
+from transformers import AutoProcessor, pipeline
+from optimum.onnxruntime import ORTModelForSpeechSeq2Seq
+from glob import glob
+
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 os.makedirs('input', exist_ok=True)
 os.makedirs('separated', exist_ok=True)
+os.makedirs('whisper_checkpoint', exist_ok=True)
+
+print("Loading ASR model...")
+processor = AutoProcessor.from_pretrained("openai/whisper-small")
+if not os.path.exists("whisper_checkpoint"):
+    model = ORTModelForSpeechSeq2Seq.from_pretrained("openai/whisper-small", from_transformers=True)
+    speech_recognition_pipeline = pipeline(
+    "automatic-speech-recognition",
+        model=model,
+        feature_extractor=processor.feature_extractor,
+        tokenizer=processor.tokenizer,
+    )
+    model.save_pretrained("whisper_checkpoint")
+else:
+    model = ORTModelForSpeechSeq2Seq.from_pretrained("whisper_checkpoint", from_transformers=False)
+    speech_recognition_pipeline = pipeline(
+    "automatic-speech-recognition",
+        model=model,
+        feature_extractor=processor.feature_extractor,
+        tokenizer=processor.tokenizer,
+    )
+print("Whisper ASR model loaded.")
 
 def separator(audio, rec_audio):
     outputs= {}
@@ -16,10 +41,14 @@ def separator(audio, rec_audio):
     elif rec_audio:
         write('input/original.wav', rec_audio[0], rec_audio[1])
 
-    outputs['path'] = separate(mix_dir="./input")
-    res = requests.post('http://localhost:8000/api/directory_to_transcribe', json={'filepaths': outputs['path']})
-    outputs['transcription'] = json.loads(res.text)['result']['transcription']
-    return outputs['path'] + outputs['transcription']
+    separate(mix_dir="./input")
+    separated_files = glob(os.path.join('separated', "*.wav"))
+    separated_files = [f for f in separated_files if "original.wav" not in f]
+    outputs['transcripts'] = []
+    for file in sorted(separated_files):
+        separated_audio = sio.wavfile.read(file)
+        outputs['transcripts'].append(speech_recognition_pipeline(separated_audio[1])['text'])
+    return sorted(separated_files) + outputs['transcripts']
     
 def set_example_audio(example: list) -> dict:
     return gr.Audio.update(value=example[0])
@@ -65,10 +94,6 @@ with demo:
     outputs_audio = [output_audio1, output_audio2, output_audio3, output_audio4, output_audio5, output_audio6, output_audio7]
     outputs_text = [output_text1, output_text2, output_text3, output_text4, output_text5, output_text6, output_text7]
     button = gr.Button("Separate")
-    # with gr.Row():
-    #     example_audios = gr.Dataset(components=[input_audio],
-    #                                 samples=[[BASE_PATH+'/samples/test1.wav'], [BASE_PATH+'/samples/test2.wav'], [BASE_PATH+'/samples/test3.wav'], [BASE_PATH+'/samples/test4.wav'], [BASE_PATH+'/samples/test5.wav']])
-    # example_audios.click(fn=set_example_audio, inputs=example_audios, outputs=example_audios.components)
     button.click(separator, inputs=[input_audio, rec_audio], outputs=outputs_audio + outputs_text)
 
-demo.launch(server_port=5000, share=True)
+demo.launch()
