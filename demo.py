@@ -6,6 +6,7 @@ import os
 from transformers import AutoProcessor, pipeline
 from optimum.onnxruntime import ORTModelForSpeechSeq2Seq
 from glob import glob
+load_model()
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 os.makedirs('input', exist_ok=True)
@@ -41,7 +42,7 @@ def separator(audio, rec_audio):
     elif rec_audio:
         write('input/original.wav', rec_audio[0], rec_audio[1])
 
-    separate(mix_dir="./input")
+    separate_demo(mix_dir="./input")
     separated_files = glob(os.path.join('separated', "*.wav"))
     separated_files = [f for f in separated_files if "original.wav" not in f]
     outputs['transcripts'] = []
