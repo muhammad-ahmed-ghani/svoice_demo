@@ -20,7 +20,7 @@ def load_model():
     global pkg
     print("Loading svoice model if available...")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    pkg = torch.load('outputs/exp_/checkpoint.th')
+    pkg = torch.load('outputs/exp_/checkpoint.th', map_location=device)
     if 'model' in pkg:
         model = pkg['model']
     else:

@@ -11,7 +11,6 @@ load_model()
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 os.makedirs('input', exist_ok=True)
 os.makedirs('separated', exist_ok=True)
-os.makedirs('whisper_checkpoint', exist_ok=True)
 
 print("Loading ASR model...")
 processor = AutoProcessor.from_pretrained("openai/whisper-small")
@@ -23,6 +22,7 @@ if not os.path.exists("whisper_checkpoint"):
         feature_extractor=processor.feature_extractor,
         tokenizer=processor.tokenizer,
     )
+    os.makedirs('whisper_checkpoint', exist_ok=True)
     model.save_pretrained("whisper_checkpoint")
 else:
     model = ORTModelForSpeechSeq2Seq.from_pretrained("whisper_checkpoint", from_transformers=False)
@@ -34,14 +34,18 @@ else:
     )
 print("Whisper ASR model loaded.")
 
-def separator(audio, rec_audio):
+def separator(audio, rec_audio, example):
     outputs= {}
-
+    for f in glob('input/*'):
+        os.remove(f)
+    for f in glob('separated/*'):
+        os.remove(f)
     if audio:
         write('input/original.wav', audio[0], audio[1])
     elif rec_audio:
         write('input/original.wav', rec_audio[0], rec_audio[1])
-
+    else:
+        os.system(f'cp {example} input/original.wav')
     separate_demo(mix_dir="./input")
     separated_files = glob(os.path.join('separated', "*.wav"))
     separated_files = [f for f in separated_files if "original.wav" not in f]
@@ -95,6 +99,12 @@ with demo:
     outputs_audio = [output_audio1, output_audio2, output_audio3, output_audio4, output_audio5, output_audio6, output_audio7]
     outputs_text = [output_text1, output_text2, output_text3, output_text4, output_text5, output_text6, output_text7]
     button = gr.Button("Separate")
-    button.click(separator, inputs=[input_audio, rec_audio], outputs=outputs_audio + outputs_text)
+    examples = [
+        "samples/mixture1.wav",
+        "samples/mixture2.wav",
+        "samples/mixture3.wav"
+    ]
+    example_selector = gr.inputs.Dropdown(examples, label="Example Audio", default="samples/mixture1.wav")
+    button.click(separator, inputs=[input_audio, rec_audio, example_selector], outputs=outputs_audio + outputs_text)
 
 demo.launch()
