@@ -26,8 +26,7 @@ svoice_demo
 ...
 ```
 
-## Running End To End project
-#### Terminal 1
+## Run Gradio Demo
 ```bash
 conda activate svoice
 python demo.py
@@ -39,8 +38,8 @@ Create dataset ```mix_clean``` with sample rate ```16K``` using [librimix](https
 Dataset Structure
 ```
 svoice_demo
-├── Libri7Mix_Dataset
-│   └── wav16k
+├── Libri{NUM_OF_SPEAKERS}Mix_Dataset -> Libri7Mix_Dataset
+│   └── wav{SAMPLE_RATE_VALUE}k -> wav16k
 │       └── min
 │       │   └── dev
 │       │       └── ...
@@ -52,17 +51,15 @@ svoice_demo
 ```
 
 #### Create ```metadata``` files
-For Librimix7 dataset
+Run predefined scripts if you want.
 ```
+# for 7 speakers
 bash create_metadata_librimix7.sh
-```
-
-For Librimix10 dataset
-```
+# for 10 speakers
 bash create_metadata_librimix10.sh
 ```
 
-Change ```conf/config.yaml``` according to your settings. Set ```C: 10``` value at line 66 for number of speakers.
+Change ```conf/config.yaml``` according to your settings. Set ```C: NUM_OF_SPEAKERS``` value at line 66 for number of speakers.
 
 ```
 python train.py
