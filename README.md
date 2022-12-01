@@ -1,5 +1,5 @@
 # Speaker Voice Separation using Neural Nets
-[![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/sczhou/CodeFormer)
+[![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/ahmedghani/svoice_demo)
 
 ## Installation
 
