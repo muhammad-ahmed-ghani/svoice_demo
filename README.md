@@ -53,7 +53,7 @@ svoice_demo
 
 #### Create ```metadata``` files
 Run predefined scripts if you want.
-```
+```bash
 # for 7 speakers
 bash create_metadata_librimix7.sh
 # for 10 speakers
@@ -62,7 +62,7 @@ bash create_metadata_librimix10.sh
 
 Change ```conf/config.yaml``` according to your settings. Set ```C: NUM_OF_SPEAKERS``` value at line 66 for number of speakers.
 
-```
+```bash
 python train.py
 ```
 This will automaticlly read all the configurations from the `conf/config.yaml` file.
@@ -70,13 +70,13 @@ To know more about the training you may refer to original [svoice](https://githu
 
 #### Distributed Training
 
-```
+```bash
 python train.py ddp=1
 ```
 
 ### Evaluating
 
-```
+```bash
 python -m svoice.evaluate <path to the model> <path to folder containing mix.json and all target separated channels json files s<ID>.json>
 ```
 
