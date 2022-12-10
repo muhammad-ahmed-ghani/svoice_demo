@@ -8,7 +8,10 @@ git clone https://github.com/Muhammad-Ahmad-Ghani/svoice_demo.git
 cd svoice_demo
 conda create -n svoice python=3.7 -y
 conda activate svoice
+# CUDA 11.3
 conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch -y
+# CPU only
+pip install torch==1.12.0+cpu torchvision==0.13.0+cpu torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
